@@ -1,4 +1,5 @@
 // app/layout.tsx
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 import { Doto, JetBrains_Mono, Figtree } from "next/font/google";
 
@@ -29,7 +30,17 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${doto.variable} ${jetbrains.variable} ${figtree.variable}`}>
-      <body>{children}</body>
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+
+      </body>
     </html>
   );
 }

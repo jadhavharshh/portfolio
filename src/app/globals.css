@@ -121,7 +121,13 @@
   body {
     @apply bg-background text-foreground;
   }
-  .font-doto {
+    .font-doto {
     font-family: 'Doto', sans-serif;
   }
+}
+
+.main-page {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 700px;
 }

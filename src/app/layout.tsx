@@ -29,7 +29,11 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${doto.variable} ${jetbrains.variable} ${figtree.variable}`}>
+    <html 
+      lang="en" 
+      className={`${doto.variable} ${jetbrains.variable} ${figtree.variable}`}
+      suppressHydrationWarning
+    >
       <body>
         <ThemeProvider
           attribute="class"
@@ -39,7 +43,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           {children}
         </ThemeProvider>
-
       </body>
     </html>
   );

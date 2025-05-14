@@ -17,6 +17,7 @@ type ContributionItem = {
   level: 0 | 1 | 2 | 3 | 4;
 };
 
+
 export default function Home() {
   const [contributions, setContributions] = useState<ContributionItem[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);

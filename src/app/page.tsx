@@ -97,7 +97,6 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col items-center bg-background text-foreground">
       <div className="w-full max-w-[700px] mx-auto px-6 py-20">
-        {/* Hero Section - Styled like legions.dev */}
         <section className="mb-16">
           <div className="text-muted-foreground jetbrains-mono flex items-center gap-1.5 text-xs tracking-tighter">Hey, it's me</div>
           <h1 className="font-doto text-4xl md:text-5xl font-bold tracking-tight mb-4">Harsh Jadhav</h1>
@@ -113,22 +112,31 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="flex items-center gap-4 mt-8">
-            <Link href="/contact" className="px-5 py-2 bg-primary text-primary-foreground rounded-md hover:opacity-90 transition-opacity inline-flex items-center gap-2">
-              <span className="inline-block w-2 h-2 bg-green-500 rounded-full"></span> Available for Hire
-            </Link>
-            <Link href="mailto:your.email@example.com" className="px-5 py-2 border border-border rounded-md hover:bg-accent hover:text-accent-foreground transition-colors">
-              Email Me
+          <div className="flex items-center gap-3 mt-8">
+            <Link
+              href="/contact"
+              className="group relative px-3 py-1.5 text-xs font-medium text-foreground bg-white/5 border border-transparent hover:border-white/20 hover:bg-white/10 rounded-md transform hover:-translate-y-0.5 transition-all duration-200 ease-out active:translate-y-0"
+            >
+              <div className="flex items-center gap-1.5">
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                </svg>
+                <span>Available for Hire</span>
+              </div>
             </Link>
 
-            <div className="ml-auto">
-              <div className="text-xs text-muted-foreground mb-1">Your Request</div>
-              <Link href="/contact" className="px-4 py-1.5 bg-secondary text-secondary-foreground rounded-md hover:opacity-90 transition-opacity">
-                Request
-              </Link>
-            </div>
+            <Link
+              href="mailto:your.email@example.com"
+              className="group relative px-3 py-1.5 text-xs font-medium text-foreground bg-white/5 border border-transparent hover:border-white/20 hover:bg-white/10 rounded-md transform hover:-translate-y-0.5 transition-all duration-200 ease-out active:translate-y-0"
+            >
+              <div className="flex items-center gap-1.5">
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                </svg>
+                <span>Email Me</span>
+              </div>
+            </Link>
           </div>
-
           {/* Enhanced GitHub Contributions Section */}
           <div className="my-8 py-1 px-0">
             <div className="flex items-center justify-between mb-4">

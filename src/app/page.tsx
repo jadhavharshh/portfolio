@@ -4,6 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
+import ExperienceSection from "@/components/sections/ExperienceSection";
+import ContactPlatforms from "@/components/sections/ContactPlatforms";
+import ProjectsSection from "@/components/sections/ProjectsSection";
 
 const ActivityCalendar = dynamic(
   () => import("react-activity-calendar").then((mod) => mod.default),
@@ -225,35 +228,11 @@ export default function Home() {
 
               </div>
             )}
+            <ExperienceSection />
           </div>
         </section>
-
-        {/* Featured Projects */}
-        <section className="py-16">
-          <h2 className="font-doto font-bold text-3xl mb-10">Featured Projects</h2>
-          <div className="grid grid-cols-1 gap-8">
-            {[1, 2, 3].map((project) => (
-              <div key={project} className="bg-card text-card-foreground rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-border">
-                <div className="h-48 bg-muted flex items-center justify-center">
-                  Project Screenshot
-                </div>
-                <div className="p-6">
-                  <h3 className="font-doto font-bold text-xl mb-2">Project Title {project}</h3>
-                  <p className="text-muted-foreground mb-4">A brief description of this project and the technologies used to build it.</p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 bg-accent text-accent-foreground rounded-full text-sm">React</span>
-                    <span className="px-3 py-1 bg-accent text-accent-foreground rounded-full text-sm">TypeScript</span>
-                  </div>
-                  <div className="flex gap-3 mt-4">
-                    <Link href="#" className="text-primary hover:underline">View Project</Link>
-                    <Link href="#" className="text-primary hover:underline">GitHub</Link>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
+        <ContactPlatforms />
+<ProjectsSection />
         {/* About Section */}
         <section className="py-16">
           <div>

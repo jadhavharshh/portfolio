@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import ExperienceSection from "@/components/sections/ExperienceSection";
 import ContactPlatforms from "@/components/sections/ContactPlatforms";
 import ProjectsSection from "@/components/sections/ProjectsSection";
+import { FloatingDockDemo } from "@/components/sections/dock-example";
 
 const ActivityCalendar = dynamic(
   () => import("react-activity-calendar").then((mod) => mod.default),
@@ -232,7 +233,7 @@ export default function Home() {
           </div>
         </section>
         <ContactPlatforms />
-<ProjectsSection />
+        <ProjectsSection />
         {/* About Section */}
         <section className="py-16">
           <div>
@@ -283,6 +284,9 @@ export default function Home() {
             <p className="text-muted-foreground">Built with Next.js & Tailwind CSS</p>
           </div>
         </footer>
+        <div className="fixed left-0 right-0 bottom-6 z-[100] flex justify-center items-center w-full">
+          <FloatingDockDemo />
+        </div>
       </div>
     </div>
   );

@@ -59,7 +59,7 @@ export function FloatingDockDemo() {
       icon: (
         <IconBrandLinkedin className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "https://linkedin.com/in/jadhavharsh", // Update with your LinkedIn
+      href: "https://linkedin.com/in/jadhavharsh", 
     },
   ];
   return (

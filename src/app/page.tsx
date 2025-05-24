@@ -8,7 +8,7 @@ import ExperienceSection from "@/components/sections/ExperienceSection";
 import ContactPlatforms from "@/components/sections/ContactPlatforms";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import { FloatingDockDemo } from "@/components/sections/dock-example";
-
+import { motion } from "framer-motion";
 const ActivityCalendar = dynamic(
   () => import("react-activity-calendar").then((mod) => mod.default),
   { ssr: false }
@@ -246,42 +246,264 @@ export default function Home() {
               When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects,
               or enjoying outdoor activities.
             </p>
-            <h3 className="font-doto font-bold text-2xl mb-4">My Skills</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {["JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "Node.js", "Git", "Figma"].map((skill) => (
-                <div key={skill} className="bg-accent p-3 rounded-lg text-center text-accent-foreground">
-                  {skill}
+            <h3 className="font-doto font-bold text-2xl mb-6">My Skills</h3>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+              {/* Frontend Category */}
+              <div className="col-span-2 md:col-span-1">
+                <h4 className="text-primary text-sm font-medium uppercase tracking-wide mb-4">Frontend</h4>
+                <div className="space-y-3">
+                  {[
+                    { name: "React", level: 90 },
+                    { name: "TypeScript", level: 85 },
+                    { name: "Next.js", level: 80 },
+                    { name: "Tailwind CSS", level: 95 },
+                  ].map((skill) => (
+                    <motion.div
+                      key={skill.name}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3 }}
+                      viewport={{ once: true }}
+                      className="group"
+                    >
+                      <div className="flex justify-between items-center mb-1">
+                        <div className="flex items-center gap-2">
+                          <span className="text-sm font-medium">{skill.name}</span>
+                        </div>
+                        <span className="text-xs text-muted-foreground">{skill.level}%</span>
+                      </div>
+                      <div className="h-1.5 w-full bg-accent/30 rounded-full overflow-hidden">
+                        <motion.div
+                          className="h-full bg-gradient-to-r from-primary/80 to-primary rounded-full"
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${skill.level}%` }}
+                          transition={{ duration: 1, delay: 0.1 }}
+                          viewport={{ once: true }}
+                        />
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              {/* Backend Category */}
+              <div className="col-span-2 md:col-span-1">
+                <h4 className="text-primary text-sm font-medium uppercase tracking-wide mb-4">Backend</h4>
+                <div className="space-y-3">
+                  {[
+                    { name: "Node.js", level: 85 },
+                    { name: "Express", level: 80 },
+                    { name: "MongoDB", level: 75 },
+                    { name: "REST API", level: 90 },
+                  ].map((skill) => (
+                    <motion.div
+                      key={skill.name}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3 }}
+                      viewport={{ once: true }}
+                      className="group"
+                    >
+                      <div className="flex justify-between items-center mb-1">
+                        <div className="flex items-center gap-2">
+                          <span className="text-sm font-medium">{skill.name}</span>
+                        </div>
+                        <span className="text-xs text-muted-foreground">{skill.level}%</span>
+                      </div>
+                      <div className="h-1.5 w-full bg-accent/30 rounded-full overflow-hidden">
+                        <motion.div
+                          className="h-full bg-gradient-to-r from-primary/80 to-primary rounded-full"
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${skill.level}%` }}
+                          transition={{ duration: 1, delay: 0.1 }}
+                          viewport={{ once: true }}
+                        />
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Tools Category */}
+              <div className="col-span-2 md:col-span-1">
+                <h4 className="text-primary text-sm font-medium uppercase tracking-wide mb-4">Tools & Others</h4>
+                <div className="space-y-3">
+                  {[
+                    { name: "Git", level: 85 },
+                    { name: "Figma", level: 80 },
+                    { name: "Docker", level: 70 },
+                    { name: "CI/CD", level: 75 },
+                  ].map((skill) => (
+                    <motion.div
+                      key={skill.name}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3 }}
+                      viewport={{ once: true }}
+                      className="group"
+                    >
+                      <div className="flex justify-between items-center mb-1">
+                        <div className="flex items-center gap-2">
+                          <span className="text-sm font-medium">{skill.name}</span>
+                        </div>
+                        <span className="text-xs text-muted-foreground">{skill.level}%</span>
+                      </div>
+                      <div className="h-1.5 w-full bg-accent/30 rounded-full overflow-hidden">
+                        <motion.div
+                          className="h-full bg-gradient-to-r from-primary/80 to-primary rounded-full"
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${skill.level}%` }}
+                          transition={{ duration: 1, delay: 0.1 }}
+                          viewport={{ once: true }}
+                        />
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Technology Badges */}
+            <div className="mt-12">
+              <h4 className="text-primary text-sm font-medium uppercase tracking-wide mb-4">Technologies I've Worked With</h4>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS",
+                  "Node.js", "Express", "MongoDB", "PostgreSQL", "Redux",
+                  "GraphQL", "Firebase", "AWS", "Vercel", "Git", "Figma"
+                ].map((tech, index) => (
+                  <motion.div
+                    key={tech}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                    viewport={{ once: true }}
+                    whileHover={{ y: -4 }}
+                    className="px-3 py-1.5 bg-card/30 backdrop-blur-sm border border-border/40 rounded-full text-xs font-medium hover:border-white/20 hover:bg-white/10 transition-all duration-300"
+                  >
+                    {tech}
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
         {/* Contact Section */}
+        {/* Contact Section */}
         <section className="py-16" id="contact">
-          <div className="text-center">
-            <h2 className="font-doto font-bold text-3xl mb-6">Get In Touch</h2>
-            <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-              Interested in working together? Feel free to reach out for collaborations or just a friendly chat.
-            </p>
-            <Link href="mailto:your.email@example.com" className="px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity">
-              Say Hello 👋
-            </Link>
-            <div className="flex justify-center gap-6 mt-10">
-              {["GitHub", "LinkedIn", "Twitter", "Instagram"].map((platform) => (
-                <Link key={platform} href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                  {platform}
-                </Link>
-              ))}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="relative overflow-hidden rounded-2xl border border-border/40 bg-card/20 p-8"
+          >
+            <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/10 rounded-full blur-3xl" />
+            <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-primary/10 rounded-full blur-3xl" />
+
+            <div className="relative z-10">
+              <div className="flex flex-col md:flex-row gap-8 items-center">
+                <div className="w-full md:w-3/5">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <h2 className="font-doto font-bold text-3xl mb-4">Let's Create Something Amazing</h2>
+                    <p className="text-muted-foreground mb-6">
+                      Have a project in mind or just want to chat about tech? I'm always open to discussing new opportunities and ideas.
+                    </p>
+
+                    <div className="space-y-4">
+                      <motion.div
+                        className="flex items-center gap-3 group"
+                        whileHover={{ x: 5 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                      >
+                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                          </svg>
+                        </div>
+                        <div>
+                          <p className="text-sm font-medium group-hover:text-primary transition-colors">Email Me</p>
+                          <Link
+                            href="mailto:your.email@example.com"
+                            className="text-muted-foreground hover:text-foreground transition-colors text-sm"
+                          >
+                            your.email@example.com
+                          </Link>
+                        </div>
+                      </motion.div>
+
+                      <motion.div
+                        className="flex items-center gap-3 group"
+                        whileHover={{ x: 5 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                      >
+                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                          </svg>
+                        </div>
+                        <div>
+                          <p className="text-sm font-medium group-hover:text-primary transition-colors">Location</p>
+                          <p className="text-muted-foreground text-sm">Mumbai, India</p>
+                        </div>
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                </div>
+
+                <div className="w-full md:w-2/5">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    viewport={{ once: true }}
+                    className="bg-background/50 backdrop-blur-sm p-6 rounded-xl border border-border/40"
+                  >
+                    <h3 className="font-medium text-lg mb-4">Ready to Start?</h3>
+                    <Link
+                      href="mailto:your.email@example.com"
+                      className="flex items-center justify-center w-full gap-2 py-3 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-all hover:-translate-y-0.5 active:translate-y-0 duration-200"
+                    >
+                      <span>Say Hello</span>
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                      </svg>
+                    </Link>
+
+                    <div className="mt-6 pt-6 border-t border-border/40">
+                      <p className="text-xs text-muted-foreground mb-3">Typical response time: within 24 hours</p>
+                      <div className="flex gap-1.5">
+                        {[...Array(5)].map((_, i) => (
+                          <motion.div
+                            key={i}
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            transition={{ delay: 0.4 + (i * 0.1) }}
+                            viewport={{ once: true }}
+                            className="w-8 h-1 rounded-full bg-primary"
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
             </div>
-          </div>
+          </motion.div>
         </section>
 
         {/* Footer */}
         <footer className="py-8 border-t border-border">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-muted-foreground">© {new Date().getFullYear()} Your Name. All rights reserved.</p>
-            <p className="text-muted-foreground">Built with Next.js & Tailwind CSS</p>
+          <div className="flex flex-col text-center justify-between items-center">
+            <p className="text-muted-foreground">© {new Date().getFullYear()} Harsh Jadhav. All rights reserved.</p>
           </div>
         </footer>
         <div className="fixed left-0 right-0 bottom-6 z-[100] flex justify-end md:justify-center items-center w-full pr-4 md:pr-0">

@@ -23,8 +23,28 @@ const figtree = Figtree({
 });
 
 export const metadata = {
-  title: "My Portfolio",
-  description: "Built with Next.js",
+  title: "Harsh Jadhav - Portfolio",
+  keywords: [
+    "Harsh Jadhav",
+    "Portfolio",
+    "Web Developer",
+    "Software Engineer",
+    "Next.js",
+    "React",
+    "JavaScript",
+    "TypeScript",
+    "Frontend Developer",
+    "UI/UX",
+    "Web Design",
+    "Web Development",
+    "Full Stack Developer",
+    "Tech Enthusiast",
+    "Open Source",
+    "GitHub",
+    "LinkedIn",
+    "Contact",
+  ],      
+  description: "Harsh Jadhav's portfolio showcasing web development projects, skills, and experience.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

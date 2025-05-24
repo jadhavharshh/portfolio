@@ -233,7 +233,9 @@ export default function Home() {
           </div>
         </section>
         <ContactPlatforms />
-        <div id="projects">        <ProjectsSection /></div>
+        <div id="projects">
+          <ProjectsSection />
+        </div>
         {/* About Section */}
         <section className="py-16">
           <div>

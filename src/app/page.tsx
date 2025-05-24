@@ -35,7 +35,23 @@ export default function Home() {
   const [contributions, setContributions] = useState<ContributionItem[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const [welcomeIndex, setWelcomeIndex] = useState(0);
+  const [welcomeComplete, setWelcomeComplete] = useState(false);
+  const [dataLoaded, setDataLoaded] = useState(false);
 
+  // Welcome messages in different languages
+  const welcomeMessages = [
+    "Welcome", // English
+    "Bienvenue", // French
+    "Bienvenido", // Spanish
+    "Willkommen", // German
+    "Benvenuto", // Italian
+    "ようこそ", // Japanese
+    "欢迎", // Chinese
+    "환영합니다", // Korean
+    "Selamat Datang", // Indonesian
+    "Добро пожаловать", // Russian
+  ];
   useEffect(() => {
     async function fetchData() {
       try {
@@ -71,33 +87,71 @@ export default function Home() {
             // Filter to show only the past 6 months
             const filteredContributions = filterLast6Months(validContributions);
             setContributions(filteredContributions);
-            setIsLoaded(true);
+            setDataLoaded(true); // Mark data as loaded but don't show content yet
           } else {
             setHasError(true);
-            setIsLoaded(true);
+            setDataLoaded(true);
           }
         } else {
           setHasError(true);
-          setIsLoaded(true);
+          setDataLoaded(true);
         }
       } catch (err) {
         console.error("Failed to fetch GitHub contributions:", err);
         setHasError(true);
-        setIsLoaded(true);
+        setDataLoaded(true);
       }
     }
     fetchData();
   }, []);
 
-  // Use a simple placeholder while loading
+  // Effect to cycle through welcome messages
+  // Effect to cycle through welcome messages
+  useEffect(() => {
+    if (!isLoaded) {
+      let currentIndex = 0;
+      const interval = setInterval(() => {
+        if (currentIndex < welcomeMessages.length - 1) {
+          currentIndex++;
+          setWelcomeIndex(currentIndex);
+        } else {
+          // We've gone through all messages
+          setWelcomeComplete(true);
+          clearInterval(interval);
+        }
+      }, 300); // Much faster rotation - 300ms per message (3 seconds total)
+
+      return () => clearInterval(interval);
+    }
+  }, [isLoaded, welcomeMessages.length]);
+
+  // Effect to control when to actually show the main content
+  useEffect(() => {
+    // Only show main content when both data is loaded AND welcome messages are complete
+    if (dataLoaded && welcomeComplete) {
+      setIsLoaded(true);
+    }
+  }, [dataLoaded, welcomeComplete]);
+
+  // Updated loading screen with rotating welcome messages
+  // Updated loading screen with rotating welcome messages
   if (!isLoaded) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-background text-foreground">
-        <div className="animate-pulse">Loading your awesome portfolio...</div>
+        <motion.div
+          key={welcomeIndex}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="text-4xl font-doto font-bold mb-6"
+        >
+          {welcomeMessages[welcomeIndex]}
+        </motion.div>
+
       </div>
     );
   }
-
   return (
     <div className="min-h-screen flex flex-col items-center bg-background text-foreground">
       <div className="w-full max-w-[700px] mx-auto px-6 py-20">

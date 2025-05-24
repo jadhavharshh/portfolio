@@ -542,10 +542,38 @@ export default function Home() {
             </motion.div>
           </section>
 
-          {/* Footer */}
-          <footer className="py-8 border-t border-border">
-            <div className="flex flex-col text-center justify-between items-center">
-              <p className="text-muted-foreground">© {new Date().getFullYear()} Harsh Jadhav. All rights reserved.</p>
+          <footer className="py-12 pt-0">
+            <div className="relative overflow-hidden rounded-xl border border-white/10 dark:border-white/5 bg-black/30 backdrop-blur-lg p-6">
+              {/* Decorative elements */}
+              <div className="absolute -top-24 -right-24 w-48 h-48 bg-blue-500/5 rounded-full blur-3xl" />
+              <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-purple-500/5 rounded-full blur-3xl" />
+
+              <div className="relative z-10">
+
+
+                {/* Copyright & Credits */}
+                <div className="border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    className="text-xs text-white/60"
+                  >
+                    © {new Date().getFullYear()} <span className="text-white/90">Harsh Jadhav</span>. All rights reserved.
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                    className="flex items-center gap-3"
+                  >
+                    <div className="text-xs text-white/60">Made with code + ♥️</div>
+
+
+                  </motion.div>
+                </div>
+              </div>
             </div>
           </footer>
           <div className="fixed left-0 right-0 bottom-6 z-[100] flex justify-end md:justify-center items-center w-full pr-4 md:pr-0">

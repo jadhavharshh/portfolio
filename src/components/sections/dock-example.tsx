@@ -2,11 +2,12 @@ import React from "react";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import {
   IconBrandGithub,
-  IconBrandX,
-  IconExchange,
+  IconBrandLinkedin,
+  IconMail,
   IconHome,
-  IconNewSection,
-  IconTerminal2,
+  IconCode,
+  IconBriefcase,
+  IconUser,
 } from "@tabler/icons-react";
 
 export function FloatingDockDemo() {
@@ -18,54 +19,47 @@ export function FloatingDockDemo() {
       ),
       href: "#",
     },
-
     {
-      title: "Products",
+      title: "Projects",
       icon: (
-        <IconTerminal2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconCode className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "#projects",
     },
     {
-      title: "Components",
+      title: "Experience",
       icon: (
-        <IconNewSection className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconBriefcase className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "#experience",
     },
     {
-      title: "Aceternity UI",
+      title: "About",
       icon: (
-        <img
-          src="https://assets.aceternity.com/logo-dark.png"
-          width={20}
-          height={20}
-          alt="Aceternity Logo"
-        />
+        <IconUser className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "#about",
     },
     {
-      title: "Changelog",
+      title: "Contact",
       icon: (
-        <IconExchange className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconMail className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
-    },
-
-    {
-      title: "Twitter",
-      icon: (
-        <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: "#",
+      href: "#contact",
     },
     {
       title: "GitHub",
       icon: (
         <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "https://github.com/jadhavharshh",
+    },
+    {
+      title: "LinkedIn",
+      icon: (
+        <IconBrandLinkedin className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "https://linkedin.com/in/jadhavharsh", // Update with your LinkedIn
     },
   ];
   return (

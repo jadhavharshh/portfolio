@@ -142,7 +142,7 @@ export default function Home() {
             </Link>
           </div>
           {/* Enhanced GitHub Contributions Section */}
-          <div className="my-8 py-1 px-0">
+          <div className="my-8 py-1 px-0" id="experience">
             <div className="flex items-center justify-between mb-4">
               <div>
                 <h3 className="text-lg font-semibold text-foreground">GitHub Activity</h3>
@@ -233,7 +233,7 @@ export default function Home() {
           </div>
         </section>
         <ContactPlatforms />
-        <ProjectsSection />
+        <div id="projects">        <ProjectsSection /></div>
         {/* About Section */}
         <section className="py-16">
           <div>
@@ -258,7 +258,7 @@ export default function Home() {
         </section>
 
         {/* Contact Section */}
-        <section className="py-16">
+        <section className="py-16" id="contact">
           <div className="text-center">
             <h2 className="font-doto font-bold text-3xl mb-6">Get In Touch</h2>
             <p className="text-muted-foreground mb-8 max-w-lg mx-auto">

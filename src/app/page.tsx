@@ -284,7 +284,7 @@ export default function Home() {
             <p className="text-muted-foreground">Built with Next.js & Tailwind CSS</p>
           </div>
         </footer>
-        <div className="fixed left-0 right-0 bottom-6 z-[100] flex justify-center items-center w-full">
+        <div className="fixed left-0 right-0 bottom-6 z-[100] flex justify-end md:justify-center items-center w-full pr-4 md:pr-0">
           <FloatingDockDemo />
         </div>
       </div>

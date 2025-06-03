@@ -1,6 +1,4 @@
 "use client";
-import { ModeToggle } from "@/components/ui/mode-toggle";
-import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
@@ -170,7 +168,7 @@ export default function Home() {
               </Link>
 
               <Link
-                href="mailto:your.email@example.com"
+                href="mailto:realharshjadhav@gmail.com"
                 className="group relative px-3 py-1.5 text-xs font-medium text-foreground bg-white/5 border border-transparent hover:border-white/20 hover:bg-white/10 rounded-md transform hover:-translate-y-0.5 transition-all duration-200 ease-out active:translate-y-0"
               >
                 <div className="flex items-center gap-1.5">
@@ -476,7 +474,8 @@ export default function Home() {
                               href="mailto:your.email@example.com"
                               className="text-muted-foreground hover:text-foreground transition-colors text-sm"
                             >
-                              your.email@example.com
+
+                              realharshjadhav@gmail.com
                             </Link>
                           </div>
                         </motion.div>
@@ -602,7 +601,7 @@ export default function Home() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="text-5xl text-white font-doto font-bold mb-6"
+              className="text-5xl text-white font-bold mb-6"
             >
               {welcomeMessages[welcomeIndex]}
             </motion.div>

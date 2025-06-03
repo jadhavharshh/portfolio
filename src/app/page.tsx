@@ -1,6 +1,4 @@
 "use client";
-import { ModeToggle } from "@/components/ui/mode-toggle";
-import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
@@ -602,7 +600,7 @@ export default function Home() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="text-5xl text-white font-doto font-bold mb-6"
+              className="text-5xl text-white font-bold mb-6"
             >
               {welcomeMessages[welcomeIndex]}
             </motion.div>

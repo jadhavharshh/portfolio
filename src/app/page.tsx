@@ -150,9 +150,14 @@ export default function Home() {
               </p>
 
               <p className="text-sm text-muted-foreground">
-                I love both <span className="text-primary font-medium">Development</span> and <span className="text-primary font-medium">Design</span>, so, That means I can create beautiful and functional websites. I'm always looking for new opportunities to learn and grow.
+                I love both <span className="text-primary font-medium">Development</span> and <span className="text-primary font-medium">Design</span>, so that means I create beautiful and functional websites. I'm always looking for new opportunities to learn and grow.
+              </p>
+
+              <p className="text-sm text-muted-foreground">
+                Right now, I'm diving into <span className="text-primary font-medium">Artificial Intelligence</span> and <span className="text-primary font-medium">Machine Learning</span> to expand my skillset and stay ahead of the curve.
               </p>
             </div>
+
 
             <div className="flex items-center gap-3 mt-8">
               <Link

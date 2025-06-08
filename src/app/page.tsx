@@ -284,12 +284,12 @@ export default function Home() {
             <div>
               <h2 className="font-doto font-bold text-3xl mb-6">About Me</h2>
               <p className="text-muted-foreground mb-4">
-                I'm a passionate web developer with X years of experience building modern web applications.
-                My focus is on creating clean, efficient, and user-friendly interfaces that deliver exceptional experiences.
+                I'm a passionate <span className="text-primary font-medium">Full-Stack Engineer</span> with 3 years of experience crafting modern digital solutions.
+                My expertise lies in architecting scalable applications that blend technical excellence with exceptional user experiences.
               </p>
               <p className="text-muted-foreground mb-6">
-                When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects,
-                or enjoying outdoor activities.
+                When I'm not engineering solutions, you'll find me exploring emerging technologies, contributing to open-source projects,
+                and mentoring aspiring developers in the tech community.
               </p>
               <h3 className="font-doto font-bold text-2xl mb-6">My Skills</h3>
 

@@ -12,26 +12,19 @@ type ExperienceItem = {
 const ExperienceSection = () => {
   const experiences: ExperienceItem[] = [
     {
-      company: "Tech Solutions Inc.",
-      position: "Senior Web Developer",
-      period: "Jan 2023 - Present",
-      description: "Led development of multiple client projects, optimizing performance and implementing best practices. Mentored junior developers and introduced modern development workflows.",
-      technologies: ["React", "Next.js", "TypeScript", "TailwindCSS"]
+      company: "Freelance",
+      position: "Full Stack Developer",
+      period: "Mar 2023 - Present",
+      description: "Developed AI-powered web applications, automating workflows and boosting operational efficiency. Engineered scalable solutions including chatbot management systems and automated video generators, resulting in a 20% increase in client revenue and 30% reduction in load times.",
+      technologies: ["React", "Node.js", "MongoDB", "Express", "AI Integration", "Next.js", "TypeScript"]
     },
     {
-      company: "Digital Innovations",
-      position: "Frontend Developer",
-      period: "Mar 2021 - Dec 2022",
-      description: "Developed responsive web applications with focus on UI/UX. Collaborated with designers to implement pixel-perfect interfaces and improved load times by 40%.",
-      technologies: ["JavaScript", "React", "CSS", "Figma"]
-    },
-    {
-      company: "WebCraft Agency",
-      position: "Junior Developer",
-      period: "Jun 2019 - Feb 2021",
-      description: "Built and maintained websites for clients across various industries. Participated in code reviews and implemented responsive designs for mobile-first experiences.",
-      technologies: ["HTML", "CSS", "JavaScript", "WordPress"]
-    },
+      company: "CSRBOX",
+      position: "IBM SkillsBuild Summer Intern",
+      period: "Jun 2024 - Aug 2024",
+      description: "Completed a 6-week program focusing on front-end development, culminating in a capstone project that improved user interface accessibility by 25%. Collaborated on real-world projects with on-time delivery of all milestones.",
+      technologies: ["HTML", "CSS", "JavaScript", "React", "UI/UX", "Project Management"]
+    }
   ];
 
   return (
@@ -50,30 +43,14 @@ const ExperienceSection = () => {
             <motion.div 
               key={index}
               className="relative pl-10"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
             >
-              {/* Timeline node with perfect alignment */}
-              {index === 0 ? (
-                <motion.div 
-                  className="absolute left-0 top-[6px] w-3 h-3 rounded-full bg-primary transform translate-x-[0.5px]"
-                  animate={{ 
-                    boxShadow: ['0 0 0px var(--primary)', '0 0 8px var(--primary)', '0 0 0px var(--primary)']
-                  }}
-                  transition={{ 
-                    duration: 2, 
-                    repeat: Infinity,
-                    repeatType: "loop" 
-                  }}
-                />
-              ) : (
-                <div 
-                  className="absolute left-0 top-[6px] w-3 h-3 rounded-full bg-primary/60 transform translate-x-[0.5px]"
-                />
-              )}
+              {/* Timeline dot */}
+              <div className="absolute left-0 top-1.5 w-3 h-3 rounded-full bg-primary"></div>
               
-              {/* Minimal card with less padding */}
               <div className="bg-card/10 p-3 rounded-md border border-border/30 hover:border-border/50 transition-colors">
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-1">
                   <h3 className="font-doto font-medium text-base">{exp.position}</h3>

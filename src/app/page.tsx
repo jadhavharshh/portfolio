@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import ExperienceSection from "@/components/sections/ExperienceSection";
+import EducationSection from "@/components/sections/EducationSection";
 import ContactPlatforms from "@/components/sections/ContactPlatforms";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import { FloatingDockDemo } from "@/components/sections/dock-example";
@@ -21,21 +22,6 @@ export default function Home() {
             <p className="text-sm text-muted-foreground max-w-xl">
               Full-stack developer building modern web applications. Currently exploring <span className="text-foreground font-medium">AI/ML</span> while freelancing and creating <span className="text-foreground font-medium">beautiful, functional websites</span>.
             </p>
-
-            <div className="flex items-center gap-3 mt-8">
-              <Link
-                href="/contact"
-                className="px-5 py-2 text-sm font-medium bg-primary text-primary-foreground rounded-md hover:opacity-90 transition-opacity"
-              >
-                Available for Hire
-              </Link>
-              <Link
-                href="mailto:realharshjadhav@gmail.com"
-                className="px-5 py-2 text-sm font-medium border border-border text-foreground rounded-md hover:bg-secondary transition-colors"
-              >
-                Email Me
-              </Link>
-            </div>
           </section>
 
           {/* Work Experience - Minimal */}
@@ -47,6 +33,17 @@ export default function Home() {
           >
             <h2 className="text-2xl font-bold mb-8">Experience</h2>
             <ExperienceSection />
+          </motion.section>
+
+          {/* Education */}
+          <motion.section 
+            className="mb-20"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
+            <h2 className="text-2xl font-bold mb-8">Education</h2>
+            <EducationSection />
           </motion.section>
 
           {/* Projects */}

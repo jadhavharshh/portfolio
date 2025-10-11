@@ -66,12 +66,6 @@ export default function Home() {
             <ContactPlatforms />
           </motion.section>
 
-          {/* Footer */}
-          <footer className="py-8">
-            <div className="text-center text-sm text-muted-foreground">
-              Made with code + ♥️
-            </div>
-          </footer>
         </div>
 
         {/* Floating Dock */}

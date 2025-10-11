@@ -56,7 +56,9 @@ export default function Home() {
             <div className="text-muted-foreground jetbrains-mono flex items-center gap-1.5 text-xs tracking-tighter mb-8 opacity-70">@theharshjadhav</div>
 
             <p className="text-sm text-muted-foreground max-w-xl">
-              Full-stack developer building modern web applications. Currently exploring <span className="text-foreground font-medium">AI/ML</span> while freelancing and creating <span className="text-foreground font-medium">beautiful, functional websites</span>.
+              Building things that people use. Shipping fast, learning faster.<br/><br/>
+              Currently neck-deep in <span className="text-foreground font-medium">Solana</span> and <span className="text-foreground font-medium">Web3</span>, exploring AI, freelancing, and occasionally touching grass.<br/><br/>
+              If it compiles and works, it ships.
             </p>
           </motion.section>
 

@@ -28,54 +28,37 @@ const ExperienceSection = () => {
   ];
 
   return (
-    <div className="my-12">
-      <div className="mb-6">
-        <h2 className="text-lg font-semibold text-foreground">Work Experience</h2>
-        <p className="text-sm text-muted-foreground">My professional journey</p>
-      </div>
-      
-      <div className="relative">
-        {/* Timeline line with perfect alignment */}
-        <div className="absolute left-[6px] top-0 bottom-0 w-[1px] bg-border opacity-40"></div>
-        
-        <div className="space-y-8 relative">
-          {experiences.map((exp, index) => (
-            <motion.div 
-              key={index}
-              className="relative pl-10"
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              {/* Timeline dot */}
-              <div className="absolute left-0 top-1.5 w-3 h-3 rounded-full bg-primary"></div>
-              
-              <div className="bg-card/10 p-3 rounded-md border border-border/30 hover:border-border/50 transition-colors">
-                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-1">
-                  <h3 className="font-doto font-medium text-base">{exp.position}</h3>
-                  <span className="text-xs text-muted-foreground mt-1 sm:mt-0 sm:ml-2 bg-background/30 px-2 py-0.5 rounded-full">{exp.period}</span>
-                </div>
-                
-                <div className="text-primary text-sm mb-2">{exp.company}</div>
-                
-                <p className="text-sm text-muted-foreground mb-2">{exp.description}</p>
-                
-                <div className="flex flex-wrap gap-1.5">
-                  {exp.technologies.map((tech, i) => (
-                    <span 
-                      key={i} 
-                      className="px-1.5 py-0.5 text-xs bg-accent/40 text-accent-foreground rounded-full"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
+    <div className="space-y-6">
+      {experiences.map((exp, index) => (
+        <motion.div 
+          key={index}
+          className="border-l-2 border-border pl-6 pb-6 last:pb-0"
+          initial={{ opacity: 0, x: -10 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, delay: index * 0.1 }}
+          viewport={{ once: true }}
+        >
+          <div className="flex flex-col sm:flex-row sm:items-start justify-between mb-2 gap-2">
+            <h3 className="text-lg font-semibold">{exp.position}</h3>
+            <span className="text-xs text-muted-foreground">{exp.period}</span>
+          </div>
+          
+          <div className="text-sm text-muted-foreground mb-2">{exp.company}</div>
+          
+          <p className="text-sm text-muted-foreground/80 mb-3 leading-relaxed">{exp.description}</p>
+          
+          <div className="flex flex-wrap gap-1.5">
+            {exp.technologies.map((tech, i) => (
+              <span 
+                key={i} 
+                className="px-2 py-0.5 text-xs bg-secondary text-foreground rounded"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </motion.div>
+      ))}
     </div>
   );
 };

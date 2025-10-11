@@ -45,7 +45,12 @@ export default function Home() {
         <div className="w-full max-w-[680px] mx-auto px-6 py-16">
           
           {/* Introduction */}
-          <section className="mb-20">
+          <motion.section 
+            className="mb-20"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
             <div className="text-muted-foreground jetbrains-mono flex items-center gap-1.5 text-xs tracking-tighter uppercase opacity-70">Hey, it's me</div>
             <h1 className="font-doto text-5xl md:text-6xl font-bold tracking-tight mb-4">Harsh Jadhav</h1>
             <div className="text-muted-foreground jetbrains-mono flex items-center gap-1.5 text-xs tracking-tighter mb-8 opacity-70">@theharshjadhav</div>
@@ -53,14 +58,14 @@ export default function Home() {
             <p className="text-sm text-muted-foreground max-w-xl">
               Full-stack developer building modern web applications. Currently exploring <span className="text-foreground font-medium">AI/ML</span> while freelancing and creating <span className="text-foreground font-medium">beautiful, functional websites</span>.
             </p>
-          </section>
+          </motion.section>
 
           {/* Work Experience - Minimal */}
           <motion.section 
             className="mb-20"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
           >
             <h2 className="text-2xl font-bold mb-8">Experience</h2>
             <ExperienceSection />
@@ -71,7 +76,7 @@ export default function Home() {
             className="mb-20"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
+            transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
           >
             <h2 className="text-2xl font-bold mb-8">Education</h2>
             <EducationSection />
@@ -82,7 +87,7 @@ export default function Home() {
             className="mb-20"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
           >
             <h2 className="text-2xl font-bold mb-8">Skills</h2>
             <div className="flex flex-wrap gap-2">
@@ -99,7 +104,7 @@ export default function Home() {
             className="mb-20"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
           >
             <ProjectsSection />
           </motion.section>
@@ -109,7 +114,7 @@ export default function Home() {
             className="mb-20"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.25 }}
+            transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
           >
             <h2 className="text-2xl font-bold mb-4">Subscribe</h2>
             <p className="text-sm text-muted-foreground mb-6">Get notified when I publish something new.</p>

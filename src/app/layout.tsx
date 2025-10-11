@@ -23,7 +23,7 @@ const figtree = Figtree({
 });
 
 export const metadata = {
-  title: "Harsh Jadhav - Portfolio",
+  title: "Harsh Jadhav",
   keywords: [
     "Harsh Jadhav",
     "Portfolio",
@@ -45,6 +45,9 @@ export const metadata = {
     "Contact",
   ],      
   description: "Harsh Jadhav's portfolio showcasing web development projects, skills, and experience.",
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

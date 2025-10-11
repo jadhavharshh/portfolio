@@ -2,6 +2,8 @@
 import Link from "next/link";
 import React from "react";
 import { useParams } from "next/navigation";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { FloatingDockDemo } from "@/components/sections/dock-example";
 
 type Post = {
@@ -81,10 +83,9 @@ export default function ThoughtPost() {
 
           {/* Content */}
           <article className="prose prose-sm prose-neutral dark:prose-invert max-w-none">
-            <div 
-              className="text-sm leading-relaxed whitespace-pre-wrap"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {post.content}
+            </ReactMarkdown>
           </article>
 
         </div>

@@ -70,10 +70,9 @@ export default function Home() {
           </motion.section>
 
           {/* Footer */}
-          <footer className="py-8 border-t border-border">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-              <div>© {new Date().getFullYear()} Harsh Jadhav. All rights reserved.</div>
-              <div>Made with code + ♥️</div>
+          <footer className="py-8">
+            <div className="text-center text-sm text-muted-foreground">
+              Made with code + ♥️
             </div>
           </footer>
         </div>

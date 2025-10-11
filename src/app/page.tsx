@@ -3,7 +3,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import ExperienceSection from "@/components/sections/ExperienceSection";
 import EducationSection from "@/components/sections/EducationSection";
-import ContactPlatforms from "@/components/sections/ContactPlatforms";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import { FloatingDockDemo } from "@/components/sections/dock-example";
 
@@ -73,16 +72,12 @@ export default function Home() {
             <ProjectsSection />
           </motion.section>
 
-          {/* Contact Platforms */}
-          <motion.section 
-            className="mb-20"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <ContactPlatforms />
-          </motion.section>
-
+          {/* Footer */}
+          <footer className="py-8">
+            <div className="text-center text-sm text-muted-foreground">
+              Made with code + ♥️
+            </div>
+          </footer>
         </div>
 
         {/* Floating Dock */}

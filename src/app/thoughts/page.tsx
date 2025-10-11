@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import React from "react";
 import { motion } from "framer-motion";
 import { FloatingDockDemo } from "@/components/sections/dock-example";
 
@@ -12,29 +13,18 @@ type Post = {
 };
 
 export default function Thoughts() {
-  const posts: Post[] = [
-    {
-      id: 1,
-      title: "Building Modern Web Applications",
-      excerpt: "Thoughts on the current state of web development and where we're heading.",
-      date: "2025-01-15",
-      slug: "building-modern-web-apps"
-    },
-    {
-      id: 2,
-      title: "Why I Love Next.js",
-      excerpt: "Exploring the benefits of using Next.js for full-stack development.",
-      date: "2025-01-10",
-      slug: "why-i-love-nextjs"
-    },
-    {
-      id: 3,
-      title: "Learning AI/ML as a Web Developer",
-      excerpt: "My journey into artificial intelligence and machine learning.",
-      date: "2025-01-05",
-      slug: "learning-ai-ml"
-    },
-  ];
+  const [posts, setPosts] = React.useState<Post[]>([]);
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    fetch('/api/thoughts')
+      .then(res => res.json())
+      .then(data => {
+        setPosts(data.posts || []);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
 
   return (
     <>
@@ -57,31 +47,37 @@ export default function Thoughts() {
 
           {/* Posts List */}
           <div className="space-y-8">
-            {posts.map((post) => (
-              <motion.article
-                key={post.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="pb-8 border-b border-border last:border-b-0"
-              >
-                <Link href={`/thoughts/${post.slug}`} className="group">
-                  <time className="text-xs text-muted-foreground">
-                    {new Date(post.date).toLocaleDateString('en-US', { 
-                      year: 'numeric', 
-                      month: 'long', 
-                      day: 'numeric' 
-                    })}
-                  </time>
-                  <h2 className="text-xl font-bold mt-2 mb-2 group-hover:text-muted-foreground transition-colors">
-                    {post.title}
-                  </h2>
-                  <p className="text-sm text-muted-foreground">
-                    {post.excerpt}
-                  </p>
-                </Link>
-              </motion.article>
-            ))}
+            {loading ? (
+              <p className="text-sm text-muted-foreground">Loading thoughts...</p>
+            ) : posts.length === 0 ? (
+              <p className="text-sm text-muted-foreground">No thoughts yet. Check back soon!</p>
+            ) : (
+              posts.map((post) => (
+                <motion.article
+                  key={post.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="pb-8 border-b border-border last:border-b-0"
+                >
+                  <Link href={`/thoughts/${post.slug}`} className="group">
+                    <time className="text-xs text-muted-foreground">
+                      {new Date(post.date).toLocaleDateString('en-US', { 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric' 
+                      })}
+                    </time>
+                    <h2 className="text-xl font-bold mt-2 mb-2 group-hover:text-muted-foreground transition-colors">
+                      {post.title}
+                    </h2>
+                    <p className="text-sm text-muted-foreground">
+                      {post.excerpt}
+                    </p>
+                  </Link>
+                </motion.article>
+              ))
+            )}
           </div>
 
         </div>

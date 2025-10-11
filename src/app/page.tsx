@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import React from "react";
 import { motion } from "framer-motion";
 import ExperienceSection from "@/components/sections/ExperienceSection";
 import EducationSection from "@/components/sections/EducationSection";
@@ -7,6 +8,37 @@ import ProjectsSection from "@/components/sections/ProjectsSection";
 import { FloatingDockDemo } from "@/components/sections/dock-example";
 
 export default function Home() {
+  const [email, setEmail] = React.useState('');
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [message, setMessage] = React.useState('');
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setMessage('');
+
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setMessage('Thanks for subscribing!');
+        setEmail('');
+      } else {
+        setMessage(data.error || 'Something went wrong');
+      }
+    } catch (error) {
+      setMessage('Failed to subscribe');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <>
       <div className="min-h-screen flex flex-col items-center bg-background text-foreground">
@@ -72,12 +104,37 @@ export default function Home() {
             <ProjectsSection />
           </motion.section>
 
-          {/* Footer */}
-          <footer className="py-8">
-            <div className="text-center text-sm text-muted-foreground">
-              Made with code + ♥️
-            </div>
-          </footer>
+          {/* Newsletter Subscribe */}
+          <motion.section 
+            className="mb-20"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+          >
+            <h2 className="text-2xl font-bold mb-4">Subscribe</h2>
+            <p className="text-sm text-muted-foreground mb-6">Get notified when I publish something new.</p>
+            <form onSubmit={handleSubscribe} className="flex gap-2">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="you@example.com"
+                className="flex-1 px-3 py-2 text-sm bg-background border border-border rounded focus:outline-none focus:border-foreground/40 transition-colors"
+                required
+                disabled={isSubmitting}
+              />
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="px-4 py-2 text-sm border border-border rounded hover:bg-secondary transition-colors disabled:opacity-50"
+              >
+                {isSubmitting ? '...' : 'Subscribe'}
+              </button>
+            </form>
+            {message && (
+              <p className="text-xs mt-2 text-muted-foreground">{message}</p>
+            )}
+          </motion.section>
         </div>
 
         {/* Floating Dock */}

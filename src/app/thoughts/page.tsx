@@ -41,7 +41,7 @@ export default function Thoughts() {
             </Link>
             <h1 className="text-2xl font-bold mb-2">Thoughts</h1>
             <p className="text-sm text-muted-foreground">
-              Occasional musings on code and design.
+              Random thoughts on code, tech, and things I'm building. Unfiltered.
             </p>
           </div>
 

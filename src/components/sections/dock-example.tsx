@@ -3,11 +3,10 @@ import { FloatingDock } from "@/components/ui/floating-dock";
 import {
   IconBrandGithub,
   IconBrandLinkedin,
+  IconBrandX,
   IconMail,
   IconHome,
-  IconCode,
-  IconBriefcase,
-  IconUser,
+  IconBook,
 } from "@tabler/icons-react";
 
 export function FloatingDockDemo() {
@@ -17,35 +16,14 @@ export function FloatingDockDemo() {
       icon: (
         <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "/",
     },
     {
-      title: "Projects",
+      title: "Thoughts",
       icon: (
-        <IconCode className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconBook className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#projects",
-    },
-    {
-      title: "Experience",
-      icon: (
-        <IconBriefcase className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: "#experience",
-    },
-    {
-      title: "About",
-      icon: (
-        <IconUser className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: "#about",
-    },
-    {
-      title: "Contact",
-      icon: (
-        <IconMail className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: "#contact",
+      href: "/thoughts",
     },
     {
       title: "GitHub",
@@ -60,6 +38,20 @@ export function FloatingDockDemo() {
         <IconBrandLinkedin className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
       href: "https://linkedin.com/in/jadhavharsh", 
+    },
+    {
+      title: "X (Twitter)",
+      icon: (
+        <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "https://twitter.com/theharshjadhav",
+    },
+    {
+      title: "Email",
+      icon: (
+        <IconMail className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "mailto:harshjadhavconnect@gmail.com",
     },
   ];
   return (

@@ -20,10 +20,10 @@ const ProjectsSection = () => {
         {
             id: 1,
             title: "ConnectX",
-            description: "Real-time social networking platform with instant messaging and user connections.",
+            description: "Full-stack learning management system with AI-powered features and real-time collaboration.",
             imageUrl: "/images/project-1.jpg",
-            technologies: ["React", "Node.js", "Socket.io", "MongoDB"],
-            liveUrl: "https://connectx-demo.com",
+            technologies: ["React", "Node.js", "Python", "MongoDB"],
+            liveUrl: "https://connect-x-povk.vercel.app/",
             githubUrl: "https://github.com/jadhavharshh/ConnectX"
         },
         {

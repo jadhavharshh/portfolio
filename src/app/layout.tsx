@@ -2,6 +2,7 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 import { Doto, JetBrains_Mono, Figtree } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next"
 
 const doto = Doto({
   subsets: ["latin"],

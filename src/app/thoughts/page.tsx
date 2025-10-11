@@ -32,53 +32,52 @@ export default function Thoughts() {
         <div className="w-full max-w-[680px] mx-auto px-6 py-16">
           
           {/* Header */}
-          <div className="mb-20">
+          <div className="mb-12">
             <Link 
               href="/" 
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors mb-8 inline-block"
+              className="text-xs text-muted-foreground hover:text-foreground transition-colors mb-8 inline-block"
             >
               ← Back
             </Link>
-            <h1 className="text-4xl font-bold mb-4">Thoughts</h1>
+            <h1 className="text-2xl font-bold mb-2">Thoughts</h1>
             <p className="text-sm text-muted-foreground">
-              Writing about development, design, and things I'm learning.
+              Occasional musings on code and design.
             </p>
           </div>
 
           {/* Posts List */}
-          <div className="space-y-8">
-            {loading ? (
-              <p className="text-sm text-muted-foreground">Loading thoughts...</p>
-            ) : posts.length === 0 ? (
-              <p className="text-sm text-muted-foreground">No thoughts yet. Check back soon!</p>
-            ) : (
-              posts.map((post) => (
-                <motion.article
+          {loading ? (
+            <p className="text-sm text-muted-foreground">Loading...</p>
+          ) : posts.length === 0 ? (
+            <p className="text-sm text-muted-foreground">No thoughts yet.</p>
+          ) : (
+            <div className="space-y-6">
+              {posts.map((post) => (
+                <article
                   key={post.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="pb-8 border-b border-border last:border-b-0"
+                  className="flex justify-between gap-8 pb-6 border-b border-border last:border-b-0"
                 >
-                  <Link href={`/thoughts/${post.slug}`} className="group">
-                    <time className="text-xs text-muted-foreground">
-                      {new Date(post.date).toLocaleDateString('en-US', { 
-                        year: 'numeric', 
-                        month: 'long', 
-                        day: 'numeric' 
-                      })}
-                    </time>
-                    <h2 className="text-xl font-bold mt-2 mb-2 group-hover:text-muted-foreground transition-colors">
+                  <Link href={`/thoughts/${post.slug}`} className="flex-1 group">
+                    <h2 className="text-sm font-medium mb-1 group-hover:text-muted-foreground transition-colors">
                       {post.title}
                     </h2>
-                    <p className="text-sm text-muted-foreground">
-                      {post.excerpt}
-                    </p>
+                    {post.excerpt && (
+                      <p className="text-sm text-muted-foreground">
+                        {post.excerpt}
+                      </p>
+                    )}
                   </Link>
-                </motion.article>
-              ))
-            )}
-          </div>
+                  <time className="text-sm text-muted-foreground whitespace-nowrap">
+                    {new Date(post.date).toLocaleDateString('en-US', { 
+                      year: 'numeric', 
+                      month: 'short', 
+                      day: 'numeric' 
+                    })}
+                  </time>
+                </article>
+              ))}
+            </div>
+          )}
 
         </div>
 

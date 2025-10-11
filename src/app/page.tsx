@@ -46,6 +46,23 @@ export default function Home() {
             <EducationSection />
           </motion.section>
 
+          {/* Skills */}
+          <motion.section 
+            className="mb-20"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <h2 className="text-2xl font-bold mb-8">Skills</h2>
+            <div className="flex flex-wrap gap-2">
+              {["JavaScript", "TypeScript", "React", "Next.js", "Node.js", "Express", "MongoDB", "PostgreSQL", "Python", "TailwindCSS", "Git", "Docker", "AI/ML"].map((skill) => (
+                <span key={skill} className="px-3 py-1 text-sm border border-border rounded-md text-muted-foreground">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </motion.section>
+
           {/* Projects */}
           <motion.section 
             className="mb-20"

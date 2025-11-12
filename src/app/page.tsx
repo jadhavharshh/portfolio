@@ -8,10 +8,29 @@ import ProjectsSection from "@/components/sections/ProjectsSection";
 import { FloatingDockDemo } from "@/components/sections/dock-example";
 import Header from "@/components/layout/Header";
 
+type LatestPost = {
+  title: string;
+  excerpt: string;
+  slug: string;
+  date: string;
+};
+
 export default function Home() {
   const [email, setEmail] = React.useState('');
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [message, setMessage] = React.useState('');
+  const [latestPost, setLatestPost] = React.useState<LatestPost | null>(null);
+
+  React.useEffect(() => {
+    fetch('/api/thoughts')
+      .then(res => res.json())
+      .then(data => {
+        if (data.posts && data.posts.length > 0) {
+          setLatestPost(data.posts[0]);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -121,12 +140,50 @@ export default function Home() {
             <ProjectsSection />
           </motion.section>
 
+          {/* Latest Thought */}
+          {latestPost && (
+            <motion.section 
+              className="flex flex-col gap-6 border-b border-dashed px-4 sm:px-6 py-12"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
+            >
+              <h2 className="jetbrains-mono text-sm font-medium tracking-tight">Latest Thought</h2>
+              
+              <Link 
+                href={`/thoughts/${latestPost.slug}`}
+                className="flex flex-col gap-3 border border-dashed rounded-sm p-4 bg-muted/20 hover:bg-muted/30 transition-colors group"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <h3 className="jetbrains-mono text-sm font-medium tracking-tight group-hover:text-foreground transition-colors flex-1">
+                    {latestPost.title}
+                  </h3>
+                  <span className="jetbrains-mono text-xs text-muted-foreground group-hover:text-foreground transition-colors whitespace-nowrap">
+                    Read →
+                  </span>
+                </div>
+                {latestPost.excerpt && (
+                  <p className="jetbrains-mono text-xs text-muted-foreground tracking-tight">
+                    {latestPost.excerpt}
+                  </p>
+                )}
+              </Link>
+
+              <Link 
+                href="/thoughts"
+                className="jetbrains-mono text-xs text-muted-foreground hover:text-foreground transition-colors"
+              >
+                All thoughts →
+              </Link>
+            </motion.section>
+          )}
+
           {/* Newsletter Subscribe */}
           <motion.section 
             className="flex flex-col gap-6 border-b border-dashed px-4 sm:px-6 py-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
+            transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
           >
             <h2 className="jetbrains-mono text-sm font-medium tracking-tight">Subscribe</h2>
             <p className="jetbrains-mono text-xs text-muted-foreground tracking-tight">Get notified when I publish something new.</p>
@@ -158,7 +215,7 @@ export default function Home() {
             className="flex flex-col gap-4 px-4 sm:px-6 py-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.5, delay: 0.7, ease: "easeOut" }}
           >
             <p className="jetbrains-mono text-xs text-muted-foreground tracking-tight text-center">
               © 2024 Harsh Jadhav. Built with Next.js

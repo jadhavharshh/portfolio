@@ -53,6 +53,12 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
+            {/* Availability Badge */}
+            <div className="flex items-center gap-2 px-3 py-1.5 border border-dashed rounded-sm bg-muted/20 w-fit">
+              <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+              <span className="jetbrains-mono text-[10px] tracking-tight text-muted-foreground">Available for hire</span>
+            </div>
+
             <div className="flex flex-col gap-2">
               <div className="jetbrains-mono text-muted-foreground text-xs tracking-tight uppercase opacity-70">Hey, it's me</div>
               <h1 className="instrument-serif text-5xl md:text-6xl font-normal tracking-tight">Harsh Jadhav</h1>

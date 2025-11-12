@@ -53,3 +53,22 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Failed to create post' }, { status: 500 });
   }
 }
+
+// DELETE post
+export async function DELETE(request: NextRequest) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+
+    if (!id) {
+      return NextResponse.json({ error: 'Post ID required' }, { status: 400 });
+    }
+
+    await sql`DELETE FROM posts WHERE id = ${id}`;
+
+    return NextResponse.json({ success: true, message: 'Post deleted successfully!' });
+  } catch (error: any) {
+    console.error('Delete post error:', error);
+    return NextResponse.json({ error: 'Failed to delete post' }, { status: 500 });
+  }
+}

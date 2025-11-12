@@ -1,13 +1,21 @@
 // app/layout.tsx
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
-import { Doto, JetBrains_Mono, Figtree } from "next/font/google";
+import { 
+  Doto, 
+  JetBrains_Mono, 
+  Figtree,
+  Instrument_Serif,
+  Instrument_Sans,
+  Urbanist,
+  Bricolage_Grotesque
+} from "next/font/google";
 import { Analytics } from "@vercel/analytics/next"
 
 const doto = Doto({
   subsets: ["latin"],
   variable: "--font-doto",
-  weight: ["400", "500", "700"], // regular, medium, bold
+  weight: ["400", "500", "700"],
 });
 
 const jetbrains = JetBrains_Mono({
@@ -21,6 +29,29 @@ const figtree = Figtree({
   subsets: ["latin"],
   variable: "--font-figtree",
   weight: ["300", "400", "600", "800"],
+});
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  variable: "--font-instrument-serif",
+  weight: ["400"],
+});
+
+const instrumentSans = Instrument_Sans({
+  subsets: ["latin"],
+  variable: "--font-instrument-sans",
+  weight: ["400", "500", "600", "700"],
+});
+
+const urbanist = Urbanist({
+  subsets: ["latin"],
+  variable: "--font-urbanist",
+});
+
+const bricolageGrotesque = Bricolage_Grotesque({
+  subsets: ["latin"],
+  variable: "--font-bricolage-grotesque",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata = {
@@ -69,7 +100,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html 
       lang="en" 
-      className={`${doto.variable} ${jetbrains.variable} ${figtree.variable}`}
+      className={`${doto.variable} ${jetbrains.variable} ${figtree.variable} ${instrumentSerif.variable} ${instrumentSans.variable} ${urbanist.variable} ${bricolageGrotesque.variable}`}
       suppressHydrationWarning
     >
       <body>
@@ -79,6 +110,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           enableSystem
           disableTransitionOnChange
         >
+          <Analytics />
           {children}
         </ThemeProvider>
       </body>

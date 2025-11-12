@@ -6,6 +6,7 @@ import ExperienceSection from "@/components/sections/ExperienceSection";
 import EducationSection from "@/components/sections/EducationSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import { FloatingDockDemo } from "@/components/sections/dock-example";
+import Header from "@/components/layout/Header";
 
 export default function Home() {
   const [email, setEmail] = React.useState('');
@@ -42,68 +43,71 @@ export default function Home() {
   return (
     <>
       <div className="min-h-screen flex flex-col items-center bg-background text-foreground">
-        <div className="w-full max-w-[680px] mx-auto px-6 py-16">
+        <div className="new-container relative !border-none sm:!border-dashed w-full">
+          <Header />
           
-          {/* Introduction */}
+          {/* Hero Section */}
           <motion.section 
-            className="mb-20"
+            className="flex flex-col gap-6 border-b border-dashed px-4 sm:px-6 py-16"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            <div className="text-muted-foreground jetbrains-mono flex items-center gap-1.5 text-xs tracking-tighter uppercase opacity-70">Hey, it's me</div>
-            <h1 className="font-doto text-5xl md:text-6xl font-bold tracking-tight mb-4">Harsh Jadhav</h1>
-            <div className="text-muted-foreground jetbrains-mono flex items-center gap-1.5 text-xs tracking-tighter mb-8 opacity-70">@theharshjadhav</div>
+            <div className="flex flex-col gap-2">
+              <div className="jetbrains-mono text-muted-foreground text-xs tracking-tight uppercase opacity-70">Hey, it's me</div>
+              <h1 className="instrument-serif text-5xl md:text-6xl font-normal tracking-tight">Harsh Jadhav</h1>
+              <div className="jetbrains-mono text-muted-foreground text-xs tracking-tight opacity-70">@theharshjadhav</div>
+            </div>
 
-            <p className="text-sm text-muted-foreground max-w-xl">
+            <p className="jetbrains-mono text-sm text-muted-foreground max-w-xl tracking-tight">
               Building things that people use. Shipping fast, learning faster.<br/><br/>
               Currently neck-deep in <span className="text-foreground font-medium">Solana</span> and <span className="text-foreground font-medium">Web3</span>, exploring AI, freelancing, and occasionally touching grass.<br/><br/>
               If it compiles and works, it ships.
             </p>
           </motion.section>
 
-          {/* Work Experience - Minimal */}
+          {/* Work Experience */}
           <motion.section 
-            className="mb-20"
+            className="flex flex-col gap-6 border-b border-dashed px-4 sm:px-6 py-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
           >
-            <h2 className="text-2xl font-bold mb-8">Experience</h2>
+            <h2 className="jetbrains-mono text-sm font-medium tracking-tight">Experience</h2>
             <ExperienceSection />
           </motion.section>
 
           {/* Education */}
           <motion.section 
-            className="mb-20"
+            className="flex flex-col gap-6 border-b border-dashed px-4 sm:px-6 py-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
           >
-            <h2 className="text-2xl font-bold mb-8">Education</h2>
+            <h2 className="jetbrains-mono text-sm font-medium tracking-tight">Education</h2>
             <EducationSection />
           </motion.section>
 
           {/* Skills */}
           <motion.section 
-            className="mb-20"
+            className="flex flex-col gap-6 border-b border-dashed px-4 sm:px-6 py-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
           >
-            <h2 className="text-2xl font-bold mb-8">Skills</h2>
-            <div className="flex flex-wrap gap-2">
+            <h2 className="jetbrains-mono text-sm font-medium tracking-tight">Skills</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {["JavaScript", "TypeScript", "React", "Next.js", "Node.js", "Express", "MongoDB", "PostgreSQL", "Python", "TailwindCSS", "Git", "Docker", "AI/ML"].map((skill) => (
-                <span key={skill} className="px-3 py-1 text-sm border border-border rounded-md text-muted-foreground">
-                  {skill}
-                </span>
+                <div key={skill} className="flex items-center justify-center px-4 py-3 border border-dashed rounded-sm bg-muted/20">
+                  <span className="jetbrains-mono text-xs text-muted-foreground tracking-tight">{skill}</span>
+                </div>
               ))}
             </div>
           </motion.section>
 
           {/* Projects */}
           <motion.section 
-            className="mb-20"
+            className="flex flex-col gap-6 border-b border-dashed px-4 sm:px-6 py-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
@@ -113,34 +117,46 @@ export default function Home() {
 
           {/* Newsletter Subscribe */}
           <motion.section 
-            className="mb-20"
+            className="flex flex-col gap-6 border-b border-dashed px-4 sm:px-6 py-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
           >
-            <h2 className="text-2xl font-bold mb-4">Subscribe</h2>
-            <p className="text-sm text-muted-foreground mb-6">Get notified when I publish something new.</p>
+            <h2 className="jetbrains-mono text-sm font-medium tracking-tight">Subscribe</h2>
+            <p className="jetbrains-mono text-xs text-muted-foreground tracking-tight">Get notified when I publish something new.</p>
             <form onSubmit={handleSubscribe} className="flex gap-2">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
-                className="flex-1 px-3 py-2 text-sm bg-background border border-border rounded focus:outline-none focus:border-foreground/40 transition-colors"
+                className="flex-1 px-3 py-2 jetbrains-mono text-xs bg-background border border-dashed rounded-sm focus:outline-none focus:border-foreground/40 transition-colors"
                 required
                 disabled={isSubmitting}
               />
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="px-4 py-2 text-sm border border-border rounded hover:bg-secondary transition-colors disabled:opacity-50"
+                className="px-4 py-2 jetbrains-mono text-xs border border-dashed rounded-sm hover:bg-muted/20 transition-colors disabled:opacity-50"
               >
                 {isSubmitting ? '...' : 'Subscribe'}
               </button>
             </form>
             {message && (
-              <p className="text-xs mt-2 text-muted-foreground">{message}</p>
+              <p className="jetbrains-mono text-xs mt-2 text-muted-foreground tracking-tight">{message}</p>
             )}
+          </motion.section>
+
+          {/* Footer */}
+          <motion.section
+            className="flex flex-col gap-4 px-4 sm:px-6 py-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
+          >
+            <p className="jetbrains-mono text-xs text-muted-foreground tracking-tight text-center">
+              © 2024 Harsh Jadhav. Built with Next.js
+            </p>
           </motion.section>
         </div>
 

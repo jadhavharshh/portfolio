@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 
 type ExperienceItem = {
   company: string;
@@ -28,14 +27,15 @@ const ExperienceSection = () => {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
       {experiences.map((exp, index) => (
-        <div key={index} className="flex justify-between gap-8">
-          <div className="flex-1">
-            <h3 className="text-sm font-medium mb-1">{exp.position} · {exp.company}</h3>
-            <p className="text-sm text-muted-foreground">{exp.description}</p>
+        <div key={index} className="flex flex-col gap-3 border border-dashed rounded-sm p-4 bg-muted/20">
+          <div className="flex flex-col gap-1">
+            <h3 className="jetbrains-mono text-sm font-medium tracking-tight">{exp.position}</h3>
+            <p className="jetbrains-mono text-xs text-muted-foreground tracking-tight">{exp.company}</p>
           </div>
-          <div className="text-sm text-muted-foreground whitespace-nowrap text-right">{exp.period}</div>
+          <p className="jetbrains-mono text-xs text-muted-foreground tracking-tight">{exp.description}</p>
+          <div className="jetbrains-mono text-xs text-muted-foreground tracking-tight">{exp.period}</div>
         </div>
       ))}
     </div>

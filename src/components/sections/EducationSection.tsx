@@ -18,14 +18,15 @@ const EducationSection = () => {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="grid grid-cols-1 gap-3">
       {education.map((edu, index) => (
-        <div key={index} className="flex justify-between gap-8">
-          <div className="flex-1">
-            <h3 className="text-sm font-medium mb-1">{edu.degree} · {edu.institution}</h3>
-            <p className="text-sm text-muted-foreground">{edu.field}</p>
+        <div key={index} className="flex flex-col gap-3 border border-dashed rounded-sm p-4 bg-muted/20">
+          <div className="flex flex-col gap-1">
+            <h3 className="jetbrains-mono text-sm font-medium tracking-tight">{edu.degree}</h3>
+            <p className="jetbrains-mono text-xs text-muted-foreground tracking-tight">{edu.institution}</p>
           </div>
-          <div className="text-sm text-muted-foreground whitespace-nowrap text-right">{edu.period}</div>
+          <p className="jetbrains-mono text-xs text-muted-foreground tracking-tight">{edu.field}</p>
+          <div className="jetbrains-mono text-xs text-muted-foreground tracking-tight">{edu.period}</div>
         </div>
       ))}
     </div>

@@ -136,6 +136,22 @@ html {
     font-family: 'JetBrains Mono', monospace;
   }
   
+  .instrument-serif {
+    font-family: var(--font-instrument-serif);
+  }
+  
+  .instrument-sans {
+    font-family: var(--font-instrument-sans);
+  }
+  
+  .urbanist {
+    font-family: var(--font-urbanist);
+  }
+  
+  .bricolage-grotesque {
+    font-family: var(--font-bricolage-grotesque);
+  }
+  
   ::-webkit-scrollbar {
     width: 8px;
   }
@@ -152,4 +168,22 @@ html {
   ::-webkit-scrollbar-thumb:hover {
     background: var(--muted-foreground);
   }
+}
+
+.new-container {
+  @apply mx-auto flex max-w-[1000px] flex-col border-x border-dashed;
+}
+
+.bg-dashed {
+  background-image: linear-gradient(
+    45deg,
+    var(--border) 12.5%,
+    transparent 12.5%,
+    transparent 50%,
+    var(--border) 50%,
+    var(--border) 62.5%,
+    transparent 62.5%,
+    transparent 100%
+  );
+  background-size: 0.25rem 0.25rem;
 }

@@ -39,11 +39,33 @@ export default function Admin() {
   const [message, setMessage] = React.useState("");
 
   React.useEffect(() => {
-    const token = localStorage.getItem("adminToken");
-    if (token) {
-      setIsAuthenticated(true);
-      fetchPosts();
-    }
+    const validateToken = async () => {
+      const token = localStorage.getItem("adminToken");
+      if (token) {
+        try {
+          const res = await fetch('/api/auth/login', {
+            method: 'GET',
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
+          });
+          
+          if (res.ok) {
+            setIsAuthenticated(true);
+            fetchPosts();
+          } else {
+            // Token expired or invalid
+            localStorage.removeItem("adminToken");
+            setIsAuthenticated(false);
+          }
+        } catch (error) {
+          localStorage.removeItem("adminToken");
+          setIsAuthenticated(false);
+        }
+      }
+    };
+    
+    validateToken();
   }, []);
 
   const fetchPosts = async () => {
@@ -77,10 +99,12 @@ export default function Admin() {
         setIsAuthenticated(true);
         fetchPosts();
       } else {
+        console.error('Login error:', data);
         setLoginError(data.error || "Login failed");
       }
     } catch (error) {
-      setLoginError("Login failed");
+      console.error('Login exception:', error);
+      setLoginError("Login failed - check console");
     }
   };
 
@@ -207,12 +231,12 @@ export default function Admin() {
   // Login Screen
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen flex flex-col items-center bg-background text-foreground">
-        <div className="new-container relative !border-none sm:!border-dashed w-full">
+      <div className="min-h-screen flex flex-col bg-background text-foreground">
+        <div className="new-container relative !border-none sm:!border-dashed w-full mx-auto flex-1 flex flex-col">
           <Header />
           
           <motion.section 
-            className="flex flex-col items-center gap-8 border-b border-dashed px-4 sm:px-6 py-20"
+            className="flex-1 flex flex-col items-center justify-center gap-8 border-b border-dashed px-4 sm:px-6 py-20"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
@@ -260,8 +284,8 @@ export default function Admin() {
   // Posts List View
   if (view === "list") {
     return (
-      <div className="min-h-screen flex flex-col items-center bg-background text-foreground">
-        <div className="new-container relative !border-none sm:!border-dashed w-full">
+      <div className="min-h-screen flex flex-col bg-background text-foreground">
+        <div className="new-container relative !border-none sm:!border-dashed w-full mx-auto min-h-screen flex flex-col">
           <Header />
           
           {/* Admin Header */}
@@ -364,8 +388,8 @@ export default function Admin() {
 
   // Create/Edit Form View
   return (
-    <div className="min-h-screen flex flex-col items-center bg-background text-foreground">
-      <div className="new-container relative !border-none sm:!border-dashed w-full">
+    <div className="min-h-screen flex flex-col bg-background text-foreground">
+      <div className="new-container relative !border-none sm:!border-dashed w-full mx-auto min-h-screen flex flex-col">
         <Header />
         
         {/* Form Header */}

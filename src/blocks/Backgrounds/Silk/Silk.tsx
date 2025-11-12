@@ -2,7 +2,6 @@
 	Installed from https://reactbits.dev/ts/tailwind/
 */
 
-/* eslint-disable react/no-unknown-property */
 // @ts-nocheck
 import React, { forwardRef, useMemo, useRef, useLayoutEffect } from "react";
 import { Canvas, useFrame, useThree, RootState } from "@react-three/fiber";
